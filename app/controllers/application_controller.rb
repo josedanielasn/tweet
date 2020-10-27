@@ -5,7 +5,11 @@ class ApplicationController < ActionController::Base
   protected
 
     def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: %i[username firstname lastname])
+      devise_parameter_sanitizer.permit(:sign_up, keys: %i[username firstname lastname email])
+    end
+
+    def go_back
+      redirect_back(fallback_location: root_path)
     end
 end
   
