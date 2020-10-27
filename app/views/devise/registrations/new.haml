@@ -3,25 +3,25 @@
   = render "devise/shared/error_messages", resource: resource
   .field
     %span Firstname
-    = f.email_field :firstname, autofocus: true, autocomplete: "lastname"
+    = f.text_field :firstname, autofocus: true, autocomplete: "lastname"
   .field
     %span Lastname
-    = f.email_field :lastname, autofocus: true, autocomplete: "lastname"
+    = f.text_field :lastname, autofocus: true, autocomplete: "lastname"
   .field
     %span Username
-    = f.email_field :username, autofocus: true, autocomplete: "username"
+    = f.text_field :username, autofocus: true, autocomplete: "username"
   .field
     %span Email
     = f.email_field :email, autofocus: true, autocomplete: "email"
   .field
-    = f.label :password
+    %span Password
     - if @minimum_password_length
       %em
         (#{@minimum_password_length} characters minimum)
     %br/
     = f.password_field :password, autocomplete: "new-password"
   .field
-    = f.label :password_confirmation
+    %span Password Confirmation
     %br/
     = f.password_field :password_confirmation, autocomplete: "new-password"
   .actions
