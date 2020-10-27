@@ -1,0 +1,22 @@
+%h1 Your Profile
+= render 'layouts/nav_bar'
+%br
+.user-info
+  .name 
+    = @user.firstname  
+    = @user.lastname
+  .username
+    = @user.username
+  .actions
+    = link_to 'Edit info', edit_user_registration_path
+    = link_to 'Delete Profile', user_path, method: :delete 
+  
+
+
+
+%h2 All Tweets
+.list-posts 
+  - if @posts.empty?
+    No tweets
+  - else
+    = render partial: 'layouts/posts', collection: @posts
