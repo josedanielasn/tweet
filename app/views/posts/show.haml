@@ -1,0 +1,15 @@
+%h1 Tweet
+
+= render 'layouts/nav_bar'
+
+.tweet-block 
+  .info-actions
+    .info
+      %strong written by: 
+      = @user.username 
+    .action
+      = link_to 'Delete', user_post_path(@user, @post), method: :delete 
+      |
+      = link_to 'Edit', edit_user_post_path(@user, @post)
+  .tweet
+    = @post.message
