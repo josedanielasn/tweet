@@ -1,4 +1,4 @@
 class Post < ApplicationRecord
   belongs_to :user
-  validates :message, presence: true, length: {maximum:300}
+  validates :message, presence: true, length: {maximum:280}
 end

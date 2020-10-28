@@ -6,10 +6,9 @@
   .info-actions
     .info
       %strong written by: 
-      = @user.username 
-    .action
-      = link_to 'Delete', user_post_path(@user, @post), method: :delete 
-      |
-      = link_to 'Edit', edit_user_post_path(@user, @post)
+      = link_to @user.username, user_path(@user) 
+    - if @user == current_user
+      .action
+        = link_to 'Delete', user_post_path(current_user, @post), method: :delete, data: { confirm: 'Are you sure?' }, local: true
   .tweet
     = @post.message

@@ -3,8 +3,7 @@
     = posts.message
   %td
   = link_to 'Show', user_post_path(posts.user, posts)
-  %td
-    = link_to 'Delete', user_post_path(posts.user, posts), method: :delete
-  %td
-    = link_to 'Edit', edit_user_post_path(posts.user, posts)
+  - if posts.user == current_user
+    %td
+      = link_to 'Delete', user_post_path(posts.user, posts), method: :delete
 
