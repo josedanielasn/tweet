@@ -1,4 +1,9 @@
 .post-field 
+  %td 
+    by: 
+    %strong
+      = link_to posts.user.username, user_path(posts.user)
+      >>>>
   %td
     = posts.message
   %td
