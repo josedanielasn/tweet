@@ -6,6 +6,18 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
+    @is_following = current_user.followed_users.find_by(id: params[:id]) 
+  end
+
+  def follow
+    @user = User.find(params[:user_id])
+    return @follows = @user.followers if params[:follow] == 'followers'
+    @follows = @user.followed_users
+  end
+
+  def newFollower
+    FollowUser.new(params[:user_id], current_user).call
+    go_back
   end
 
   def destroy
