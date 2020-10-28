@@ -10,7 +10,7 @@ RSpec.describe Post, type: :model do
 
     context "when message of post is invalid" do
       let(:post1) { build(:post, message: nil)}
-      let(:post2) { build(:post, message: "1" * 301)}
+      let(:post2) { build(:post, message: "1" * 281)}
 
       it { expect(post1).not_to be_valid }
       it { expect(post2).not_to be_valid }
