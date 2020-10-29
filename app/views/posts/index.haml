@@ -16,4 +16,10 @@
 
 = render 'posts/page'
 
-
+==========
+==========
+==========
+==========
+%h1 Users to follow
+- if User.all.count > 1
+  = render partial: 'shared/users', collection: User.all
