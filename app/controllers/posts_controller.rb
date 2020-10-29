@@ -1,7 +1,10 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = PostFollowing.new(current_user).call
+    @posts = Pagination.new(PostFollowing.new(current_user).call, params)
+    @parsed_posts = @posts.call
+    @last_page = @posts.last_page
+    @page = @posts.page
     @post = current_user.posts.build
     @reposts = current_user.reposts
   end

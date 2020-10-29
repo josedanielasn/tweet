@@ -1,5 +1,5 @@
 %h1 User Profile
-= render 'layouts/nav_bar'
+= render 'shared/nav_bar'
 %br
 .user-info
   .name 
@@ -28,7 +28,9 @@
       following
 %h2 All Tweets
 .list-posts 
-  - if @posts.empty?
+  - if @parsed_posts.empty?
     No tweets
   - else
-    = render partial: 'layouts/posts', collection: @posts
+    = render partial: 'shared/posts', collection: @parsed_posts
+
+= render 'users/page'
