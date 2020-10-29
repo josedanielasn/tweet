@@ -1,0 +1,28 @@
+============================================
+.post-field 
+  %writter
+    by: 
+    %strong
+      = link_to posts[:post].user.username, user_path(posts[:post].user)
+      >>>>
+  .message
+    = posts[:post].message
+  .reposting
+    = link_to user_post_repost_path(current_user, posts[:post]), method: :patch do
+      - if @reposts.find_by(id: posts[:post].id) == nil
+        Retweet
+      - else
+        Unretweet
+  .action
+    = link_to 'Show', user_post_path(posts[:post].user, posts[:post])
+    - if posts[:post].user == current_user
+      = link_to 'Delete', user_post_path(posts[:post].user, posts[:post]), method: :delete
+  - if posts[:reposter] != "original"
+    .reposter
+      %strong
+        Retweeted by: 
+        - if current_user == posts[:reposter]
+          = link_to 'you', user_path(posts[:reposter].id)
+        - else
+          = link_to posts[:reposter].username, user_path(posts[:reposter].id)
+
