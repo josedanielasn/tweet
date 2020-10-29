@@ -5,8 +5,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
+    # byebug
+    @posts = ArrangePost.new(@user).call
     @is_following = current_user.followed_users.find_by(id: params[:id]) 
+    @reposts = current_user.reposts
   end
 
   def follow

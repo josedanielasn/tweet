@@ -3,8 +3,11 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, except: [:index, :new, :create] do
-    resources :posts
+    resources :posts do 
+      patch '/retweet' => 'posts#repost', as: 'repost'
+    end
     get '/follows' => 'users#follow', as: 'follow'
     patch '/newFollower' => 'users#newFollower', as:'newFollower'
   end
+
 end
