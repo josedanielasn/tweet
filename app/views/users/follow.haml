@@ -1,14 +1,14 @@
-= render 'layouts/nav_bar'
+= render 'shared/nav_bar'
 
 - if params[:follow] == nil
   %h1 Following
   - if @follows.empty?
     No following
   - else
-    = render partial: 'layouts/follow', collection: @follows
+    = render partial: 'shared/follow', collection: @follows
 - else
   %h1 Followers
   - if @follows.empty?
     No followers
   - else
-    = render partial: 'layouts/follow', collection: @follows
+    = render partial: 'shared/follow', collection: @follows
