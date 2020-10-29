@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.all
+    @posts = PostFollowing.new(current_user).call
     @post = current_user.posts.build
+    @reposts = current_user.reposts
   end
 
   def show
@@ -20,6 +21,12 @@ class PostsController < ApplicationController
   def destroy
     @post = current_user.posts.find(params[:id])
     @post.destroy
+    go_back
+  end
+
+  def repost
+    @post = Post.find(params[:post_id])
+    Repost.new(@post, current_user).call
     go_back
   end
 
