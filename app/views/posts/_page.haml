@@ -2,7 +2,7 @@
   .pages
     - if @page != 0
       = link_to '< Back', root_path(page: @page - 1)
-    - if @page - 2 >= -1 
+    - if @page - 2 > -1 
       = link_to 1, root_path
       %span ... 
     - if @page == @last_page - 2
