@@ -2,14 +2,13 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :posts
+  has_many :notifications
   has_many :retweets, foreign_key: "reposter_id", dependent: :destroy
   has_many :reposts, through: :retweets, source: :repost
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
   has_many :reverse_relationships, foreign_key: "followed_id", class_name:  "Relationship", dependent: :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
-  has_many :mentions, foreign_key: 'mentionee_id', dependent: :destroy
-  has_many :mentioners, through: :mentions, source: :mentioner
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :firstname, presence: true, length: {minimum:2, maximum:15}
