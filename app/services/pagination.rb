@@ -18,3 +18,5 @@ class Pagination
     @page = @params.fetch(:page, 0).to_i
   end
 end 
+
+
