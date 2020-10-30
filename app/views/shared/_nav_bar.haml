@@ -2,3 +2,8 @@
   = link_to 'home', root_path
   = link_to current_user.username, user_path(current_user)
   = link_to 'Sign Out', destroy_user_session_path, method: :delete 
+  .notif
+    = link_to user_mention_path(current_user) do
+      = current_user.notifications.recent_notification.count
+      %span notification
+    
