@@ -16,7 +16,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.build(posts_params)
+    @post = current_user.posts.create(posts_params)
+    @post.message = MentionLink.new(@post.message).call
+    @post.mentionees << GetMention.new(@post.message).call
     return go_back if @post.save
     render 'new'
   end
