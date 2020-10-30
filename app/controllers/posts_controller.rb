@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.create(posts_params)
     @post.message = MentionLink.new(@post.message).call
-    @post.mentionees << GetMention.new(@post.message).call
+    GetMention.new(@post.message, @post).call
     return go_back if @post.save
     render 'new'
   end
@@ -34,7 +34,7 @@ class PostsController < ApplicationController
     Repost.new(@post, current_user).call
     go_back
   end
-
+  
   private
     def posts_params
       params.require(:post).permit(:message)
