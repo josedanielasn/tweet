@@ -24,6 +24,11 @@ class UsersController < ApplicationController
     go_back
   end
 
+  def mention
+    Notify.new(current_user).remove_notify_mentions
+    @posts = Notify.new(current_user).all_post_mentions
+  end
+
   def destroy
     current_user.destroy
     sign_out_and_redirect(current_user)
