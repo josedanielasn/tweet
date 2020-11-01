@@ -1,12 +1,9 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Pagination.new(PostFollowing.new(current_user).call, params)
-    @parsed_posts = @posts.call
-    @last_page = @posts.last_page
-    @page = @posts.page
+    @user = current_user.followed_users.pluck(:id) << current_user.id
+    @posts = Post.where(user_id: @user).paginate(page: params[:page], per_page: 5).order('created_at DESC')
     @post = current_user.posts.build
-    @reposts = current_user.reposts
   end
 
   def show

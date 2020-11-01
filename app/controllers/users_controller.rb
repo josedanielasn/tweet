@@ -5,12 +5,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = Pagination.new(ArrangePost.new(@user).call, params)
-    @parsed_posts = @posts.call
-    @last_page = @posts.last_page
-    @page = @posts.page
+    @posts = @user.posts.paginate(page: params[:page], per_page: 5).order('created_at DESC')
     @is_following = current_user.followed_users.find_by(id: params[:id]) 
-    @reposts = current_user.reposts
   end
 
   def follow
