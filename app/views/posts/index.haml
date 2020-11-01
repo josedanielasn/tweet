@@ -9,12 +9,12 @@
       = f.submit 'tweet', class: 'button'
 
 .list-posts 
-  - if @parsed_posts.empty?
+  - if @posts.empty?
     No tweets
   - else
-    = render partial: 'shared/posts', collection: @parsed_posts
+    = render partial: 'shared/posts', collection: @posts
 
-= render 'posts/page'
+= will_paginate @posts
 
 ==========
 ==========
