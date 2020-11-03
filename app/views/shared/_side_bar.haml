@@ -5,3 +5,5 @@
     .body
       - if User.all.count > 1
         = render partial: 'shared/users', collection: User.all
+      - else 
+        No existing users

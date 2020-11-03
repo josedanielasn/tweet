@@ -31,7 +31,8 @@
             following
     .list-posts 
       - if @posts.empty?
-        No tweets
+        .post-field
+          No tweets
       - else
         = render partial: 'shared/posts', collection: @posts
 

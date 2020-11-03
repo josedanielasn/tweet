@@ -80,6 +80,8 @@
 
 .list-posts {
   height: 60vh;
+  color: $color;
+  border-top: solid 0.5px $color2;
 }
 
 .pagination-home {
