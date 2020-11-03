@@ -1,0 +1,29 @@
+@import '../_variables';
+
+
+.tweet-page {
+  display: flex;
+  flex-flow: row;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.tweet-body {
+  width: 45%;
+  height: 100vh;
+  overflow-y: auto;
+  > .title {
+    width: 100%;
+    background-color: $body-color;
+    padding: ms(0, $thread: for_padding_margin);
+    padding-left: ms(3, $thread: for_padding_margin);
+    color: $color;
+    font-size: ms(4);
+    font-weight: 800;
+    border-bottom: solid 0.5px $color2;
+    height: 7vh;
+    position: sticky;
+    top: 0;
+  }
+}
