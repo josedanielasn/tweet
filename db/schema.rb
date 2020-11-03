@@ -40,14 +40,6 @@ ActiveRecord::Schema.define(version: 2020_11_01_062350) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "retweets", force: :cascade do |t|
-    t.integer "repost_id"
-    t.integer "reposter_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["reposter_id", "repost_id"], name: "index_retweets_on_reposter_id_and_repost_id", unique: true
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "firstname"
     t.string "lastname"
