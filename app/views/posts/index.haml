@@ -1,25 +1,22 @@
-%h1 Home Page/ All Posts
-= render 'shared/nav_bar'
+.home-page 
+  = render 'shared/nav_bar'
+  .home-body
+    .title 
+      Home
+    .new-tweet
+      = form_with model: @post, url: user_posts_path(current_user), html: {class: "form-tweet"}, local: true do |f|
+        .fields 
+          = f.text_area :message, placeholder: "What's happening?" ,class: "message"    
+        .submit-button
+          = f.submit 'Tweet', class: 'button'
 
-.new-tweet
-  = form_with model: @post, url: user_posts_path(current_user), html: {class: "form-tweet"}, local: true do |f|
-    .fields 
-      = f.text_area :message    
-    .submit-button
-      = f.submit 'tweet', class: 'button'
+    .list-posts 
+      - if @posts.empty?
+        No tweets
+      - else
+        = render partial: 'shared/posts', collection: @posts
 
-.list-posts 
-  - if @posts.empty?
-    No tweets
-  - else
-    = render partial: 'shared/posts', collection: @posts
+      .pagination-home
+        = will_paginate @posts
 
-= will_paginate @posts
-
-==========
-==========
-==========
-==========
-%h1 Users to follow
-- if User.all.count > 1
-  = render partial: 'shared/users', collection: User.all
+  = render "shared/side_bar"

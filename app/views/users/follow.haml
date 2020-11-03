@@ -1,14 +1,24 @@
-= render 'shared/nav_bar'
+.follow-page
+  = render 'shared/nav_bar'
+  .follow-body
+    - if params[:follow] == 'followers'
+      .title
+        Followers
+      .lists
+        - if @follows.empty?
+          No followers
+        - else
+          = render partial: 'shared/follow', collection: @follows
+    - elsif params[:follow] == nil
+      .title
+        Following
+      .lists
+        - if @follows.empty?
+          No following
+        - else
+          = render partial: 'shared/follow', collection: @follows
+          
+  = render "shared/side_bar"
+        
 
-- if params[:follow] == nil
-  %h1 Following
-  - if @follows.empty?
-    No following
-  - else
-    = render partial: 'shared/follow', collection: @follows
-- else
-  %h1 Followers
-  - if @follows.empty?
-    No followers
-  - else
-    = render partial: 'shared/follow', collection: @follows
+

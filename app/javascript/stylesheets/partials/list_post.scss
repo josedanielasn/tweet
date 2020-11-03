@@ -1,0 +1,48 @@
+@import '../_variables';
+
+
+.post-field {
+  width: 100%;
+  border-bottom: solid 0.25px $color2;
+  display: flex;
+  flex-flow: row;
+  padding: ms(1, $thread: for_padding_margin);
+  > .avatart-profile {
+    width: 20%;
+  }
+}
+
+.post-body {
+  color: $color2;
+  font-size: ms(2);
+  > .writter-link > .link {
+    font-size: ms(3);
+    color: $color;
+    text-decoration: none;
+    font-weight: 500;
+    margin: ms(1, $thread: for_padding_margin);
+    margin-left: 0;
+  }
+  > .writter-link > .link:hover {
+   text-decoration: underline;
+   color: $twitter-theme;
+  }
+
+  > .message {
+    padding-left: ms(1, $thread: for_padding_margin);
+  }
+}
+
+img {
+  width: 45px;
+  height: 45px;
+  border-radius: 45px;
+  background-color: $color;
+  margin-right: ms(0, $thread: for_padding_margin);
+}
+
+.action-body {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+}

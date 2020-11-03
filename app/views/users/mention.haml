@@ -1,18 +1,14 @@
-%h1 Notifications
+.notif-page
+  = render 'shared/nav_bar'
+  .notif-body
+    .title
+      Notifications
+    .subtitle
+      Mentions
+    .list-posts 
+      - if @posts.empty?
+        No tweets with mention
+      - else
+        = render partial: 'shared/posts', collection: @posts
 
-= render 'shared/nav_bar'
-
-%h1 Mentions
-- if @posts != nil
-  - @posts.each do |post|
-    ============================================
-    .post-field 
-      %writter
-        by: 
-        %strong
-          = link_to post.user.username, user_path(post.user)
-          >>>>
-      .message
-        = raw post.message
-- else
-  No tweets with mention
+  = render "shared/side_bar"
