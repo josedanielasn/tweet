@@ -1,0 +1,14 @@
+.notif-page
+  = render 'shared/nav_bar'
+  .notif-body
+    .title
+      Notifications
+    .subtitle
+      Mentions
+    .list-posts 
+      - if @posts.empty?
+        No tweets with mention
+      - else
+        = render partial: 'shared/posts', collection: @posts
+
+  = render "shared/side_bar"

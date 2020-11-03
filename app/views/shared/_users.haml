@@ -1,0 +1,6 @@
+.user-block
+  .avatar-profile 
+    = link_to user_path(users), class: "link-profile" do
+      = image_tag "avatar_profile.png" , class: "avatar"
+  .user-link
+    = link_to users.username, user_path(users), class: "user"

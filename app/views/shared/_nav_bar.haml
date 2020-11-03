@@ -1,0 +1,13 @@
+.nav-bar 
+  .nav-part
+    = link_to 'Home', root_path, class: "nav"
+  .nav-part
+    = link_to "Profile", user_path(current_user), class: "nav"
+  .nav-part
+    = link_to user_mention_path(current_user), class: "nav" do
+      Notification -  
+      %span{class: "notification"}
+        = current_user.notifications.recent_notification.count
+  .nav-part
+    = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "nav"
+    

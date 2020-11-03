@@ -1,15 +1,22 @@
-%h1 Home Page/ All Posts
-= render 'layouts/nav_bar'
+.home-page 
+  = render 'shared/nav_bar'
+  .home-body
+    .title 
+      Home
+    .new-tweet
+      = form_with model: @post, url: user_posts_path(current_user), html: {class: "form-tweet"}, local: true do |f|
+        .fields 
+          = f.text_area :message, placeholder: "What's happening?" ,class: "message"    
+        .submit-button
+          = f.submit 'Tweet', class: 'button'
 
-.new-tweet
-  = form_with model: @post, url: user_posts_path(current_user), html: {class: "form-tweet"}, local: true do |f|
-    .fields 
-      = f.text_area :message    
-    .submit-button
-      = f.submit 'tweet', class: 'button'
+    .list-posts 
+      - if @posts.empty?
+        No tweets
+      - else
+        = render partial: 'shared/posts', collection: @posts
 
-.list-posts 
-  - if @posts.empty?
-    No tweets
-  - else
-    = render partial: 'layouts/posts', collection: @posts
+      .pagination-home
+        = will_paginate @posts
+
+  = render "shared/side_bar"

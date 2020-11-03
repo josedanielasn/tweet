@@ -1,29 +1,31 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    %span Firstname
-    = f.text_field :firstname, autofocus: true, autocomplete: "lastname"
-  .field
-    %span Lastname
-    = f.text_field :lastname, autofocus: true, autocomplete: "lastname"
-  .field
-    %span Username
-    = f.text_field :username, autofocus: true, autocomplete: "username"
-  .field
-    %span Email
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    %span Password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    %span Password Confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.signup-body
+  .title
+    Create you account
+  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form-signup"} ) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .form-parts
+      %span First Name
+      = f.text_field :firstname, autofocus: true, autocomplete: "lastname", class: "fields"
+    .form-parts
+      %span Last Name
+      = f.text_field :lastname, autofocus: true, autocomplete: "lastname", class: "fields"
+    .form-parts
+      %span Username
+      = f.text_field :username, autofocus: true, autocomplete: "username", class: "fields"
+    .form-parts
+      %span Email
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: "fields"
+    .form-parts
+      %span 
+        Password
+        - if @minimum_password_length
+          (#{@minimum_password_length} characters minimum)
+      = f.password_field :password, autocomplete: "new-password", class: "fields"
+    .form-parts
+      %span Password Confirmation
+      = f.password_field :password_confirmation, autocomplete: "new-password", class: "fields"
+    .actions-signup
+      = f.submit "Sign up", class: "button"
+  .links-signup
+    - if controller_name != 'sessions'
+      = link_to "Already have an account? Log in", new_session_path(resource_name), class: "links" 

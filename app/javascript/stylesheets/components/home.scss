@@ -1,0 +1,94 @@
+@import '../_variables';
+
+.home-page {
+  display: flex;
+  flex-flow: row;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.home-body {
+  width: 45%;
+  height: 100vh;
+  overflow-y: auto;
+  > .title {
+    width: 100%;
+    background-color: $body-color;
+    padding: ms(0, $thread: for_padding_margin);
+    padding-left: ms(3, $thread: for_padding_margin);
+    color: $color;
+    font-size: ms(4);
+    font-weight: 800;
+    border-bottom: solid 0.5px $color2;
+    height: 7vh;
+    position: sticky;
+    top: 0;
+  }
+}
+
+.home-body > .new-tweet {
+  width: 100%;
+  height: 28vh;
+  background-color: $body-color2;
+  padding: ms(1, $thread: for_padding_margin);
+  border-bottom: solid 0.5px $color2;
+  > .form-tweet {
+    margin: 0 auto;
+    padding: ms(0, $thread: for_padding_margin);
+    width: 90%;
+    background-color: $body-color;
+  }
+}
+
+.form-tweet {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  padding: ms(1, $thread: for_padding_margin);
+  border-radius: 5px;
+  > .fields > .message{
+    padding: ms(1, $thread: for_padding_margin);
+    resize: none;
+    width: 100%;
+    min-height: 120px;
+    max-height: 160px;
+    background-color: $body-color;
+    border: none;
+    border-bottom: solid 0.5px $color2;
+    color: $color;
+    font-size: ms(2);
+    outline: none;
+  }
+
+  > .submit-button {
+    margin: auto;
+    margin-left: 85%;
+  }
+
+  > .submit-button > .button {
+    background-color: $twitter-theme;
+    color: $color;
+    font-size: ms(2);
+    font-weight: 500;
+    text-align: center;
+    border: none;
+    border-radius: 24px;
+    padding: ms(1, $thread: for_padding_margin);
+  }
+}
+
+.list-posts {
+  height: 60vh;
+}
+
+.pagination-home {
+  display: flex;
+  justify-content: flex-end;
+  padding: ms(1, $thread: for_padding_margin);
+  border-top: solid 0.5px $color2;
+  height: 5vh;
+}
+
+
+

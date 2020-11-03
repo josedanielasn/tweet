@@ -1,0 +1,50 @@
+.side-bar {
+  margin: 0;
+  width: 30%;
+  height: 100vh;
+  border-left: solid 0.5px $color2;
+}
+
+.follow-users {
+  width: 80%;
+  margin: 32px auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  background-color: $body-color2;
+  border-radius: 10px;
+  > .title {
+    width: 100%;
+    padding: ms(2, $thread: for_padding_margin);
+    font-size: ms(4);
+    font-weight: 700;
+    color: $color;
+    border-bottom: solid 0.25px $color2;
+  }
+}
+
+.body {
+  display: flex;
+  flex-flow: column;
+  > .user-block {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    padding: ms(1, $thread: for_padding_margin);
+  }
+}
+
+.user-block {
+  > .user-link > .user {
+    color: $color;
+    font-size: ms(3);
+    text-decoration: none;
+  }
+
+  > .user-link > .user:hover {
+    text-decoration: underline;
+    color: $twitter-theme;
+  }
+}
+
+

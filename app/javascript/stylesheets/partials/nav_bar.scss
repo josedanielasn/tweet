@@ -1,0 +1,34 @@
+@import '../_variables';
+
+.nav-bar {
+  width: 25%;
+  height: 100vh;
+  border-right: solid 0.5px $color2;
+  display: flex;
+  flex-flow: column;
+  padding: ms(6, $thread: for_padding_margin) 0;
+  padding-left: ms(7, $thread: for_padding_margin);
+  padding-right: ms(1, $thread: for_padding_margin);
+}
+
+.nav-part{
+  margin-bottom: ms(3, $thread: for_padding_margin);
+  > .nav{
+    padding: ms(1, $thread: for_padding_margin);
+    width: auto;
+    color: $color;
+    font-size: ms(3);
+    text-decoration: none;
+    border-radius: ms(4);
+    &:hover {
+      background-color: $body-color2;
+      color: $twitter-theme;
+    }
+  }
+  > .nav > .notifications {
+    color: $color3;
+  }
+}
+
+
+

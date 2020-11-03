@@ -1,0 +1,72 @@
+@import '../_variables';
+
+.signup-body{
+  margin: 40px auto;
+  width: 480px;
+  display: flex;
+  flex-flow: column;
+  justify-items: center;
+  color: $color;
+  > .title{
+    margin: ms(2, $thread: for_padding_margin) auto;
+    font-size: ms(4);
+    font-weight: 700;
+    font-family: $title-font1;
+  }
+}
+
+.form-signup > .form-parts{
+  background-color: $body-color2;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  font-family: $text-font1;
+  font-size: ms(2);
+  margin-bottom: ms(2, $thread: for_padding_margin);
+  padding: ms(0, $thread: for_padding_margin) ms(1, $thread: for_padding_margin);
+  border-bottom: solid 2px rgb(136, 153, 166);
+  color: $color2;
+
+  > .fields, 
+  .field_with_errors > .fields {
+    background-color: $body-color2;
+    outline: none;
+    border: none;
+    font-size: ms(3);
+    font-family: $text-font1;
+    color: $color;
+    font-weight: 500;
+  }
+}
+
+.actions-signup {
+  width: 100%;
+  .button{
+    background-color: $twitter-theme;
+    width: 100%;
+    color: $color;
+    font-size: ms(2);
+    font-weight: 800;
+    text-align: center;
+    border: none;
+    border-radius: 24px;
+    padding: ms(1, $thread: for_padding_margin);
+  }
+}
+
+.signup-body > .links-signup {
+  display: flex;
+  justify-content: center;
+  color: $twitter-theme;
+  padding: ms(2, $thread: for_padding_margin);
+
+  > .links {
+    color: $twitter-theme;
+    text-decoration: none;
+  }
+}
+
+.list-errors {
+  color: $color3;
+  padding: ms(1, $thread: for_padding_margin) 0;
+}

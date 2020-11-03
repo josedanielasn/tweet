@@ -1,0 +1,21 @@
+@import '../_variables';
+
+.profile-page {
+  display: flex;
+  flex-flow: row;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  > .head-profile { 
+    width: 100%;
+    height: 28vh;
+  }
+}
+
+.user-info {
+  margin: ms(2, $thread: for_padding_margin) auto;
+  width: 90%;
+  height: 25vh;
+  padding: ms(2, $thread: for_padding_margin);
+  background-color: $body-color2;
+}
