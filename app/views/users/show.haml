@@ -1,36 +1,41 @@
-%h1 User Profile 
-= render 'shared/nav_bar'
-%br
-.user-info
-  .name 
-    = @user.firstname  
-    = @user.lastname
-  .username
-    = @user.username
-  - if @user == current_user
-    .actions
-      = link_to 'Edit info', edit_user_registration_path
-      = link_to 'Delete Profile', user_path, method: :delete
-  - else
-    .follow-button
-      = link_to user_newFollower_path(@user), method: :patch do
-        - if @is_following
-          Unfollow
-        -else 
-          Follow
-  .followers
-    = link_to user_follow_path(@user, follow: 'followers'), class: 'followers' do
-      = @user.followers.count
-      follower
-  .following
-    = link_to user_follow_path(@user), class: 'following' do
-      = @user.followed_users.count
-      following
-%h2 All Tweets
-.list-posts 
-  - if @posts.empty?
-    No tweets
-  - else
-    = render partial: 'shared/posts', collection: @posts
+.profile-page
+  = render 'shared/nav_bar'
+  .home-body
+    .title
+      Profile
+    .head-profile
+      .user-info
+        .name 
+          = @user.firstname  
+          = @user.lastname
+        .username
+          = @user.username
+        - if @user == current_user
+          .actions
+            = link_to 'Edit info', edit_user_registration_path
+            = link_to 'Delete Profile', user_path, method: :delete
+        - else
+          .follow-button
+            = link_to user_newFollower_path(@user), method: :patch do
+              - if @is_following
+                Unfollow
+              -else 
+                Follow
+        .followers
+          = link_to user_follow_path(@user, follow: 'followers'), class: 'followers' do
+            = @user.followers.count
+            follower
+        .following
+          = link_to user_follow_path(@user), class: 'following' do
+            = @user.followed_users.count
+            following
+    .list-posts 
+      - if @posts.empty?
+        No tweets
+      - else
+        = render partial: 'shared/posts', collection: @posts
 
-= will_paginate @posts
+      .pagination-home
+        = will_paginate @posts
+
+  = render "shared/side_bar"

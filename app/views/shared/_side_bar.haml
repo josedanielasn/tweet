@@ -1,0 +1,7 @@
+.side-bar
+  .follow-users
+    .title
+      Who to follow
+    .body
+      - if User.all.count > 1
+        = render partial: 'shared/users', collection: User.all

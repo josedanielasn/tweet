@@ -1,26 +1,27 @@
-============================================
 .post-field 
-  %writter
-    by: 
-    %strong
-      = link_to CheckRetweet.new(posts).get_user.username, user_path(CheckRetweet.new(posts).get_user)
-      >>>>
-  .message
-    = raw posts.message
-  .reposting 
-    = link_to user_post_repost_path(current_user, posts), method: :patch do
-      - if posts.retwit_id == nil && current_user.posts.find_by(retwit_id: posts.id) == nil
-        Retweet
-      - else 
-        Unretweet
-  .action
-    = link_to 'Show', user_post_path(posts.user, posts)
-    - if posts.user == current_user
-      = link_to 'Delete', user_post_path(posts.user, posts), method: :delete
-  - if CheckRetweet.new(posts).is_a_retweet?
-    %strong
-      Retweeted by: 
-      = posts.user.username 
-    
+  .avatar-profile 
+    = link_to user_path(CheckRetweet.new(posts).get_user), class: "link-profile" do
+      = image_tag "avatar_profile.png" , class: "avatar"
+  .post-body
+    .writter-link
+      = link_to CheckRetweet.new(posts).get_user.username, user_path(CheckRetweet.new(posts).get_user), class: "link"
+    .message
+      = raw posts.message
+    .action-body
+      .reposting 
+        = link_to user_post_repost_path(current_user, posts), method: :patch do
+          - if posts.retwit_id == nil && current_user.posts.find_by(retwit_id: posts.id) == nil
+            Retweet
+          - else 
+            Unretweet
+      .action
+        = link_to 'Show', user_post_path(posts.user, posts)
+        - if posts.user == current_user
+          = link_to 'Delete', user_post_path(posts.user, posts), method: :delete
+      - if CheckRetweet.new(posts).is_a_retweet?
+        %strong
+          Retweeted by: 
+          = posts.user.username 
+        
 
 
